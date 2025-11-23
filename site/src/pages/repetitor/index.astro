@@ -1,7 +1,10 @@
 ---
 import {Hello} from "../../components/Hello.tsx";
+import Layout from "../../layouts/Layout.astro";
 ---
 
-<h1>Mysh</h1>
+<Layout>
+    <h1 class="bg-lime-600">Mysh</h1>
 
-<Hello name="dear student" />
+    <Hello name="dear student"/>
+</Layout>
