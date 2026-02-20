@@ -1,0 +1,13 @@
+---
+import {Hello} from "../../components/Hello.tsx";
+import Layout from "../../layouts/Layout.astro";
+import {WeightChart} from "../../components/WeightChart.tsx";
+---
+
+<Layout>
+    <h1 class="bg-blue-400">Mysh</h1>
+
+    <Hello name="dear student"/>
+
+    <WeightChart client:only="react" />
+</Layout>
