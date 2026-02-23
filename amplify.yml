@@ -1,21 +1,5 @@
 version: 1
 applications:
-  - appRoot: site
-    frontend:
-      phases:
-        preBuild:
-          commands:
-            - npm ci
-        build:
-          commands:
-            - npm run build
-      artifacts:
-        baseDirectory: dist
-        files:
-          - '**/*'
-      cache:
-        paths:
-          - node_modules/**/*
   - appRoot: .
     backend:
       phases:
@@ -32,3 +16,21 @@ applications:
       cache:
         paths:
           - lambdas/progress/node_modules/**/*
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - cd site
+            - npm ci
+        build:
+          commands:
+            - cd site
+            - npm run build
+      artifacts:
+        baseDirectory: site/dist
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - site/node_modules/**/*
