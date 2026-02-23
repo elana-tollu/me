@@ -3,14 +3,18 @@ applications:
   - appRoot: infra
     backend:
       phases:
-        preBuild:
-          commands:
-            - cd ../lambdas/progress && npm ci --cache .npm --prefer-offline
         build:
           commands:
+            - INFRA_DIR=$(pwd)
+            - cd ../lambdas/progress
+            - npm ci --cache .npm --prefer-offline
             - npm run build
+            - cd $INFRA_DIR
+            - npm ci --cache .npm --prefer-offline
+            - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
       cache:
         paths:
+          - .npm/**/*
           - ../lambdas/progress/node_modules/**/*
     frontend:
       phases:
