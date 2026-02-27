@@ -1,6 +1,6 @@
 {
   "name": "my-function",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.995.0",
     "@aws-sdk/lib-dynamodb": "^3.995.0",
