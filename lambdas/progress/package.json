@@ -10,6 +10,8 @@
     "typescript": "^5.x"
   },
   "scripts": {
-    "build": "tsc"
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "postbuild": "cd dist && zip -r dist.zip ."
   }
 }
