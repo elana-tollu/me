@@ -9,6 +9,7 @@ export function createProgress(scope: Stack){
         DB: db.tableName,
     }
 
-    createLambda(scope, env);
+    const lambda = createLambda(scope, env);
 
+    db.grantReadWriteData(lambda);
 }
