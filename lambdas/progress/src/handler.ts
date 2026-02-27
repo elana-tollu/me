@@ -8,7 +8,9 @@ const client = new DynamoDBClient({});
 
 const dynamo = DynamoDBDocumentClient.from(client);
 
-const tableName = "test-weight";
+const tableName = process.env.DB;
+
+//todo убедиться в том, что TableName определена
 
 export const handler = async () => {
 

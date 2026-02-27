@@ -3,6 +3,12 @@ import {createLambda} from "./lambda";
 import { createDb } from "./db";
 
 export function createProgress(scope: Stack){
-    createLambda(scope);
-    createDb(scope);
+    const db = createDb(scope);
+
+    const env = {
+        DB: db.tableName,
+    }
+
+    createLambda(scope, env);
+
 }

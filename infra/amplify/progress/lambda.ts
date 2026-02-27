@@ -1,8 +1,8 @@
-import { Stack } from "aws-cdk-lib";
-import {Architecture, Code, Function, Runtime } from "aws-cdk-lib/aws-lambda";
+import {Stack} from "aws-cdk-lib";
+import {Architecture, Code, Function, Runtime} from "aws-cdk-lib/aws-lambda";
 import {join} from 'node:path';
 
-export function createLambda(scope: Stack){
+export function createLambda(scope: Stack, env: Record<string, string>) {
 
     const __dirname = import.meta.dirname;
     const codePath = join(__dirname, '../../../lambdas/progress/dist/dist.zip');
@@ -13,6 +13,7 @@ export function createLambda(scope: Stack){
         code: Code.fromAsset(codePath),
         handler: 'handler.handler',
         memorySize: 128,
+        environment: env,
     });
 }
 
