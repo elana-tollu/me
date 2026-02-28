@@ -4,5 +4,9 @@ export function createLambdaUrl(lambda: Function) {
 
     return lambda.addFunctionUrl({
         authType: FunctionUrlAuthType.NONE,
+        cors: {
+            allowedOrigins: ['*'],
+            allowedHeaders: ['*']
+        }
     });
 }

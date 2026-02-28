@@ -2,12 +2,15 @@
 import {Hello} from "../../components/Hello.tsx";
 import Layout from "../../layouts/Layout.astro";
 import {WeightChart} from "../../components/progress/WeightChart.tsx";
+import {TestApi} from "../../components/progress/TestApi.tsx";
 ---
 
 <Layout>
     <h1 class="bg-blue-400">Mysh</h1>
 
     <Hello name="dear student"/>
+
+    <TestApi client:only="react" />
 
     <WeightChart client:only="react" />
 </Layout>
