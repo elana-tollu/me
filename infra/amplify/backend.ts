@@ -8,4 +8,10 @@ const backend = defineBackend({});
 
 const progressStack = backend.createStack('ProgressStack');
 
-createProgress(progressStack);
+const progressApi = createProgress(progressStack);
+
+backend.addOutput({
+    custom: {
+        progressApi
+    },
+});
