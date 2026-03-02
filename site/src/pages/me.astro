@@ -1,0 +1,23 @@
+<script>
+    import outputs from "../../../infra/amplify_outputs.json";
+    import { Amplify } from 'aws-amplify';
+    import { fetchAuthSession } from 'aws-amplify/auth';
+
+    Amplify.configure(outputs);
+
+    const session = await fetchAuthSession();
+    console.log(session.tokens);
+    console.log('access_token', session.tokens?.accessToken?.toString());
+
+    const accessToken = session.tokens?.accessToken?.toString();
+    const progressApi = outputs.custom.progressApi;
+
+    const response = await fetch(progressApi, {
+        method: "POST",
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({}),
+        // …
+    });
+</script>

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noEmit": true,
     "outDir": "dist",
     "module": "CommonJS",
     "target": "ES2022",
