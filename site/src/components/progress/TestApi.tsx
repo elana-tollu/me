@@ -1,5 +1,9 @@
 import {type FC, useEffect, useState} from "react";
 import outputs from "../../../../infra/amplify_outputs.json";
+import { Amplify } from 'aws-amplify';
+import {signInWithRedirect} from "@aws-amplify/auth";
+
+Amplify.configure(outputs);
 
 const progressApi = outputs.custom.progressApi;
 
@@ -21,13 +25,16 @@ export const TestApi: FC = () => {
         []
     )
 
+    const signIn = () => {
+        signInWithRedirect({ provider: "Google" })
+    }
+
     return (
         <div>
             Test api!!!!
             <pre>{testResponse}</pre>
-            <pre>
-                {outputString}
-            </pre>
+
+            <button onClick={signIn}>Sigh in</button>
         </div>
     );
 }
